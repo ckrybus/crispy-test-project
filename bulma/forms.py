@@ -9,6 +9,7 @@ from django.utils import timezone
 
 from crispy_bulma.bulma import InlineCheckboxes, InlineRadios
 from crispy_bulma.layout import Button, Column, IconField, FormGroup, Row, Submit
+from crispy_bulma.widgets import FileUploadInput
 
 from bootstrap4 import models
 
@@ -146,8 +147,8 @@ class MessageForm(forms.Form):
 
     file_field = forms.FileField(
         label="file_field",
-        widget=widgets.FileInput(),
-        help_text='with widgets.FileInput()'
+        widget=FileUploadInput(),
+        help_text='with Bulma FileUploadInput()'
     )
 
     file_field_raw = forms.FileField(
@@ -272,8 +273,8 @@ class HorizontalMessageForm(forms.Form):
 
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
-        widget=widgets.FileInput(),
-        help_text='with FileInput widget',
+        widget=FileUploadInput(),
+        help_text='with Bulma FileUploadInput widget',
         required=True,
     )
 
@@ -304,7 +305,15 @@ class HorizontalMessageForm(forms.Form):
     helper.form_horizontal = True
 
 
-FormWithFileField = modelform_factory(models.WithFileField, fields="__all__")
+class WithFileForm(forms.ModelForm):
+    class Meta:
+        fields = ['my_file', 'my_char']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['my_file'].widget = FileUploadInput()
+
+
+FormWithFileField = modelform_factory(models.WithFileField, form=WithFileForm)
 
 class HorizontalModelForm(forms.ModelForm):
     class Meta:
@@ -312,3 +321,6 @@ class HorizontalModelForm(forms.ModelForm):
         fields = '__all__'
     helper = FormHelper()
     helper.form_horizontal = True
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['my_file'].widget = FileUploadInput()
