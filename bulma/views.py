@@ -1,12 +1,15 @@
-# -*- coding: utf-8 -*-
 import errno
 import os
 
 from django.conf import settings
 from django.shortcuts import render
 
-from bulma.forms import (FormWithFileField, HorizontalMessageForm,
-                         HorizontalModelForm, MessageForm)
+from bulma.forms import (
+    FormWithFileField,
+    HorizontalMessageForm,
+    HorizontalModelForm,
+    MessageForm,
+)
 from bulma.models import WithFileField
 
 

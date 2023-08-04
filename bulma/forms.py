@@ -1,14 +1,8 @@
-# -*- coding: utf-8 -*-
-import datetime
-
 from crispy_bulma.bulma import InlineCheckboxes, InlineRadios
-from crispy_bulma.layout import (Button, Column, FormGroup, IconField, Row,
-                                 Submit)
+from crispy_bulma.layout import Button, Column, FormGroup, IconField, Row, Submit
 from crispy_bulma.widgets import FileUploadInput
-from crispy_forms.bootstrap import (AppendedText, PrependedAppendedText,
-                                    PrependedText)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Field, Layout
+from crispy_forms.layout import Field, Layout
 from django import forms
 from django.forms import modelform_factory
 from django.utils import timezone
@@ -77,7 +71,7 @@ class MessageForm(forms.Form):
         ),
         initial="option_one",
         widget=forms.CheckboxSelectMultiple,
-        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
+        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",  # noqa
     )
 
     inline_checkboxes = forms.MultipleChoiceField(
@@ -101,9 +95,7 @@ class MessageForm(forms.Form):
         help_text="help on a grouped_checkboxes",
     )
 
-    icon_field = forms.CharField(
-        help_text="Here's more help text this time on an icon field"
-    )
+    icon_field = forms.CharField(help_text="Here's more help text this time on an icon field")
 
     appended_text = forms.CharField(help_text="Here's more help text")
 
@@ -186,7 +178,7 @@ class MessageForm(forms.Form):
         "time_input",
         "date_input",
         # TODO
-        #'split_datetime_field',
+        # 'split_datetime_field',
         FormGroup(
             Submit("save_changes", "Save changes", css_class="is-primary is-large"),
             Button("Cancel"),
@@ -250,7 +242,7 @@ class HorizontalMessageForm(forms.Form):
         ),
         initial="option_one",
         widget=forms.CheckboxSelectMultiple,
-        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
+        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",  # noqa
     )
 
     inline_checkboxes = forms.MultipleChoiceField(
@@ -330,6 +322,8 @@ class WithFileForm(forms.ModelForm):
 
 
 FormWithFileField = modelform_factory(WithFileField, form=WithFileForm)
+
+
 class HorizontalModelForm(forms.ModelForm):
     class Meta:
         model = WithFileField

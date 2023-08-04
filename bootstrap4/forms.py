@@ -1,12 +1,13 @@
-# -*- coding: utf-8 -*-
-import datetime
-
-from crispy_forms.bootstrap import (AppendedText, FormActions,
-                                    InlineCheckboxes, InlineRadios,
-                                    PrependedAppendedText, PrependedText)
+from crispy_forms.bootstrap import (
+    AppendedText,
+    FormActions,
+    InlineCheckboxes,
+    InlineRadios,
+    PrependedAppendedText,
+    PrependedText,
+)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import (HTML, Button, Column, Div, Field, Layout, Row,
-                                 Submit)
+from crispy_forms.layout import Column, Field, Layout, Row, Submit
 from django import forms
 from django.forms import modelform_factory, widgets
 from django.utils import timezone
@@ -67,7 +68,7 @@ class MessageForm(forms.Form):
         ),
         initial="option_one",
         widget=forms.CheckboxSelectMultiple,
-        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
+        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",  # noqa
     )
 
     inline_checkboxes = forms.MultipleChoiceField(
@@ -140,9 +141,7 @@ class MessageForm(forms.Form):
         help_text="with widgets.FileInput()",
     )
 
-    file_field_raw = forms.FileField(
-        label="file_field_raw", help_text="with default widget"
-    )
+    file_field_raw = forms.FileField(label="file_field_raw", help_text="with default widget")
 
     # Bootstrap4
     helper = FormHelper()
@@ -233,7 +232,7 @@ class HorizontalMessageForm(forms.Form):
         ),
         initial="option_one",
         widget=forms.CheckboxSelectMultiple,
-        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
+        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",  # noqa
     )
 
     inline_checkboxes = forms.MultipleChoiceField(

@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
-from crispy_forms.bootstrap import (AppendedText, FormActions,
-                                    PrependedAppendedText, PrependedText)
+from crispy_forms.bootstrap import (
+    AppendedText,
+    FormActions,
+    PrependedAppendedText,
+    PrependedText,
+)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import (HTML, Button, Column, Div, Field, Layout, Row,
-                                 Submit)
+from crispy_forms.layout import Column, Field, Layout, Row, Submit
 from django import forms
 from django.utils import timezone
 
@@ -51,7 +53,7 @@ class MessageForm(forms.Form):
         ),
         initial="option_one",
         widget=forms.CheckboxSelectMultiple,
-        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",
+        help_text="<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.",  # noqa
     )
 
     grouped_checkboxes = forms.MultipleChoiceField(
