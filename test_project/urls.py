@@ -19,7 +19,6 @@ from bootstrap3.views import index as bootstrap_3_preview
 from bootstrap4.views import index as bootstrap_4_preview
 from bulma.views import index as bulma_preview
 from django_rendering.views import index as django_rendering_preview
-from semantic.views import index as semantic_preview
 
 urlpatterns = [
     path("", bootstrap_4_preview),
@@ -27,5 +26,4 @@ urlpatterns = [
     path("bootstrap3", bootstrap_3_preview, name="bootstrap3.views.index"),
     path("bootstrap4", bootstrap_4_preview, name="bootstrap4.views.index"),
     path("bulma", bulma_preview, name="bulma.views.index"),
-    path("semantic", semantic_preview, name="semantic.views.index"),
 ]
