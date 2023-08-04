@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     # internal apps
     "bootstrap3",
     "bootstrap4",
+    "crispy_bootstrap4",
     "bulma",
     "django_rendering",
 )
