@@ -41,10 +41,11 @@ INSTALLED_APPS = (
     # dependencies
     "crispy_forms",
     "crispy_bulma",
+    "crispy_bootstrap3",
+    "crispy_bootstrap4",
     # internal apps
     "bootstrap3",
     "bootstrap4",
-    "crispy_bootstrap4",
     "bulma",
     "django_rendering",
 )
@@ -81,7 +82,6 @@ TEMPLATES = [
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = (
     "bootstrap",
-    "uni_form",
     "bootstrap3",
     "bootstrap4",
     "bulma",

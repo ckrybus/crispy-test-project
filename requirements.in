@@ -1,7 +1,8 @@
-Django==4.1.7
-django-crispy-forms==1.14.0
-crispy-bootstrap4==2022.1
-crispy-bulma==0.8.3
+Django<4.2
+django-crispy-forms
+crispy-bootstrap3
+crispy-bootstrap4
+crispy-bulma
 pip-tools
 pre-commit
 django-distill
