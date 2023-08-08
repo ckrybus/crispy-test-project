@@ -4,7 +4,7 @@
 {% block content %}
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item pl-5" href="#">Crispy Test Project</a>
+    <a class="navbar-item pl-5" href="{% url 'main-index' %}">Crispy Test Project</a>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -17,7 +17,6 @@
       <a class="navbar-item" href="{% url 'bootstrap3.views.index' %}">Bootstrap 3</a>
       <a class="navbar-item" href="{% url 'bootstrap4.views.index' %}">Bootstrap 4</a>
       <a class="navbar-item is-active" href="{% url 'bulma.views.index' %}">Bulma</a>
-      <a class="navbar-item" href="{% url 'semantic.views.index' %}">Semantic UI</a>
     </div>
   </div>
 </nav>

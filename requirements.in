@@ -1,0 +1,8 @@
+Django<4.2
+django-crispy-forms
+crispy-bootstrap3
+crispy-bootstrap4
+crispy-bulma
+pip-tools
+pre-commit
+django-distill

@@ -1,0 +1,174 @@
+{% extends 'bulma/base.html' %}
+
+{% block content %}
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item pl-5" href="{% url 'main-index' %}">Crispy Test Project</a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'django_rendering.views.index' %}">Django rendering</a>
+      <a class="navbar-item" href="{% url 'bootstrap3.views.index' %}">Bootstrap 3</a>
+      <a class="navbar-item" href="{% url 'bootstrap4.views.index' %}">Bootstrap 4</a>
+      <a class="navbar-item is-active" href="{% url 'bulma.views.index' %}">Bulma</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title" style="padding-bottom: 50px">
+      Django-crispy-forms template pack demos
+    </h1>
+
+    <div class="columns is-multiline">
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Bootstrap 5</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="#">Demo TODO</a>
+              <br>
+              <a href="https://github.com/django-crispy-forms/crispy-bootstrap5">crispy-bootstrap5</a>
+              <br>
+              <a>Docs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Tailwind</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="#">Demo TODO</a>
+              <br>
+              <a href="https://github.com/django-crispy-forms/crispy-tailwind">crispy-tailwind</a>
+              <br>
+              <a href="https://django-crispy-forms.github.io/crispy-tailwind/index.html">Docs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Bulma</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="{% url 'bulma.views.index' %}">Demo</a>
+              <br>
+              <a href="https://github.com/ckrybus/crispy-bulma">crispy-bulma</a>
+              <br>
+              <a href="https://crispy-bulma.readthedocs.io/en/latest/">Docs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Foundation</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="#">Demo TODO</a>
+              <br>
+              <a href="https://github.com/sveetch/crispy-forms-foundation">crispy-forms-foundation</a>
+              <br>
+              <a href="https://crispy-forms-foundation.readthedocs.io/en/latest/">Docs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Bootstrap 4</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="{% url 'bootstrap4.views.index' %}">Demo</a>
+              <br>
+              <a href="https://github.com/django-crispy-forms/crispy-bootstrap4">crispy-bootstrap4</a>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4 has-text-black">Bootstrap 3</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="{% url 'bootstrap3.views.index' %}">Demo</a>
+              <br>
+              <a href="https://github.com/django-crispy-forms/crispy-bootstrap3">crispy-bootstrap3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4 has-text-black">Bootstrap 2</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="https://github.com/django-crispy-forms/crispy-forms-bootstrap2">crispy-forms-bootstrap2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4 has-text-black">Django rendering</p>
+              </div>
+            </div>
+            <div class="content">
+              <a href="{% url 'django_rendering.views.index' %}">Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
