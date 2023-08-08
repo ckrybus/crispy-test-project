@@ -2,14 +2,17 @@
 import datetime
 
 from django import forms
-from django.forms import widgets, modelform_factory
+from django.forms import modelform_factory
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, Column
-from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText, FormActions, InlineCheckboxes, \
-    InlineRadios
+from crispy_forms.layout import Layout, Div, HTML, Field
+from crispy_forms.bootstrap import AppendedText, PrependedText, PrependedAppendedText
 from django.utils import timezone
 
-from bootstrap4 import models
+from crispy_bulma.bulma import InlineCheckboxes, InlineRadios
+from crispy_bulma.layout import Button, Column, IconField, FormGroup, Row, Submit
+from crispy_bulma.widgets import FileUploadInput
+
+from bulma.models import WithFileField
 
 
 class MessageForm(forms.Form):
@@ -19,6 +22,14 @@ class MessageForm(forms.Form):
     text_input_a = forms.CharField()
     text_input_b = forms.CharField()
     text_input_c = forms.CharField()
+
+    integer_input = forms.IntegerField()
+    decimal_input = forms.DecimalField()
+    url_input = forms.URLField()
+    time_input = forms.TimeField()
+    date_input = forms.DateField()
+    datetime_input = forms.DateTimeField()
+    password_input = forms.CharField(widget=forms.PasswordInput, label="Password")
 
     textarea = forms.CharField(
         widget=forms.Textarea(),
@@ -91,6 +102,10 @@ class MessageForm(forms.Form):
         help_text="help on a grouped_checkboxes",
     )
 
+    icon_field = forms.CharField(
+        help_text="Here's more help text this time on an icon field"
+    )
+
     appended_text = forms.CharField(
         help_text="Here's more help text"
     )
@@ -134,57 +149,65 @@ class MessageForm(forms.Form):
             'https://v4-alpha.getbootstrap.com/components/forms/#form-controls'),
     )
 
-    datetime_field = forms.SplitDateTimeField(
+    split_datetime_field = forms.SplitDateTimeField(
         initial=timezone.now()
     )
     boolean_field = forms.BooleanField()
 
     file_field = forms.FileField(
         label="file_field",
-        widget=widgets.FileInput(),
+        widget=FileUploadInput(),
         help_text='with widgets.FileInput()'
     )
 
     file_field_raw = forms.FileField(
         label="file_field_raw",
-        help_text='with default widget'
+        help_text='with default widget',
     )
 
-    # Bootstrap4
+    # Bulma
     helper = FormHelper()
     helper.layout = Layout(
         Field('text_input', css_class='form-control-lg'),
-        Field('textarea', rows="3", css_class='form-control-lg'),
+        Field('textarea', rows="3", css_class='is-primary is-large'),
         'radio_buttons',
         InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
         InlineCheckboxes('inline_checkboxes'),
-        AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
-        AppendedText('appended_select', '.00'),
-        PrependedAppendedText('prepended_appended_select', '$', '.00'),
-        PrependedText('prepended_select', '$'),
-        PrependedText('prepended_text',
-                      '<input type="checkbox" checked="checked" value="" id="" name="">',
-                      active=True),
-        PrependedText('prepended_text_two', '@'),
+        IconField("icon_field", icon_prepend="fa fa-user"),
         'select',
-        'multicolon_select',
+        Field('multicolon_select', size="5"),
         'boolean_field',
-        'file_field',
+        Field('file_field', css_class='is-primary is-large'),
         'file_field_raw',
-        'grouped_checkboxes',
+        # TODO
+        # 'grouped_checkboxes',
         Row(
             Column('text_input_a','text_input_b'),
             Column('text_input_c'),
         ),
-        'datetime_field',
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
-        )
+        "integer_input",
+        "decimal_input",
+        "url_input",
+        "time_input",
+        "date_input",
+
+        # TODO
+        #'split_datetime_field',
+        FormGroup(
+            Submit('save_changes', 'Save changes', css_class="is-primary is-large"),
+            Button('Cancel'),
+        ),
+        "datetime_input",
+        "password_input",
+
+        FormGroup(
+            Submit('save_changes', 'Save changes', css_class="is-primary"),
+            Button('Cancel'),
+        ),
+
     )
-    helper.use_custom_control = True
+
 
 class HorizontalMessageForm(forms.Form):
     text_input = forms.CharField()
@@ -273,7 +296,7 @@ class HorizontalMessageForm(forms.Form):
 
     boolean_field = forms.BooleanField()
     file_field = forms.FileField(
-        widget=widgets.FileInput(),
+        widget=FileUploadInput(),
         help_text='with FileInput widget',
         required=True,
     )
@@ -283,8 +306,7 @@ class HorizontalMessageForm(forms.Form):
         required=True,
     )
 
-
-    # Bootstrap4
+    # Bulma
     helper = FormHelper()
     helper.layout = Layout(
         Field('text_input', css_class='form-control-lg'),
@@ -293,39 +315,33 @@ class HorizontalMessageForm(forms.Form):
         InlineRadios('inline_radio_buttons'),
         Field('checkboxes', style="background: #FAFAFA"),
         InlineCheckboxes('inline_checkboxes'),
-        AppendedText('appended_text', '.00'),
-        AppendedText('appended_text2', '.00', css_class='form-control-lg'),
-        PrependedText('prepended_text',
-                      '<input type="checkbox" checked="checked" value="" id="" name="">',
-                      active=True),
-        PrependedText('prepended_text_two', '@'),
         Field('select'),
         Field('multicolon_select'),
         Field('boolean_field'),
         Field('file_field'),
         Field('file_field_raw'),
-        FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
-        ),
-        Row(
-            Column('text_input_a','text_input_b'),
-            Column('text_input_c'),
+        FormGroup(
+            Submit('save_changes', 'Save changes', css_class="is-primary"),
+            Button('Cancel'),
         ),
     )
-    helper.form_class = 'form-horizontal'
+    helper.form_horizontal = True
 
-    helper.use_custom_control = False
-    helper.label_class = 'col-4'
-    helper.field_class = 'col-8'
 
-FormWithFileField = modelform_factory(models.WithFileField, fields="__all__")
 
+
+class WithFileForm(forms.ModelForm):
+    class Meta:
+        fields = ['my_file', 'my_char']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['my_file'].widget = FileUploadInput()
+
+
+FormWithFileField = modelform_factory(WithFileField, form=WithFileForm)
 class HorizontalModelForm(forms.ModelForm):
     class Meta:
-        model = models.WithFileField
+        model = WithFileField
         fields = '__all__'
     helper = FormHelper()
-    helper.label_class = 'col-4'
-    helper.field_class = 'col-8'
-    helper.form_class = 'form-horizontal'
+    helper.form_horizontal = True
